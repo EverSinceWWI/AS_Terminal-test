@@ -3,6 +3,11 @@ body{
 	color:#ffb200;
 	font-family:monospace;
 	font-size:16pt;
+	overflow: -moz-scrollbars-none;
+}
+
+::-webkit-scrollbar {
+display: none;
 }
 
 .logo{

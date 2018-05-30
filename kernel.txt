@@ -1,3 +1,62 @@
+---------------------------
+ES Systems corp.
+---------------------------
+
+URN PORTABLE TERMINAL V1.00
+BIOS BUILD 0033
+
+Testing Memory
+MEMORY OK
+L1 CACHE OK
+L2 CACHE OK
+
+BOOTING SYSTEM
+
+....................................
+
+1 PROGRAM DETECTED
+
+- RUNNING -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AETHER SCRIPT V1.00
+--------------------------
+
 struct group_info init_groups = { .usage = ATOMIC_INIT(2) };
 
 struct group_info *groups_alloc(int gidsetsize){
