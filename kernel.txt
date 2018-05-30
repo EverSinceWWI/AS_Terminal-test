@@ -2,7 +2,7 @@
 ES Systems corp.
 ---------------------------
 
-URN PORTABLE TERMINAL V1.00
+URN PORTABLE TERMINAL V1.01
 BIOS BUILD 0033
 
 Testing Memory
