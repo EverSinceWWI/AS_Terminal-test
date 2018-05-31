@@ -108,7 +108,6 @@ var Typer={
 				$("#console").html($("#console").html().substring(0,cont.length-1)); // remove it before adding the text
 			if(key.keyCode!=8){ // if key is not backspace
 				Typer.index+=Typer.speed;	// add to the index the speed
-				console.log(Typer.index);
 			}else{
 				if(Typer.index>0) // else if index is not less than 0
 					Typer.index-=Typer.speed;//	remove speed for deleting text
