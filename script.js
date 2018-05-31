@@ -3,6 +3,7 @@
 *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
 */
 var r = 0;
+var enter=0;
 $(
 	function(){
 		$( document ).keydown(
@@ -41,7 +42,7 @@ var Typer={
 		Typer.accessCount=0; //reset count
 		var ddiv=$("<div id='gran'>").html(""); // create new blank div and id "gran"
 		ddiv.addClass("accessGranted"); // add class to the div
-		ddiv.html("<h1>ACCESS GRANTED</h1>"); // set content of div
+		ddiv.html("<h1>OPERATION COMPLETED.<br>SHUTTING DOWN...</h1>"); // set content of div
 		$(document.body).prepend(ddiv); // prepend div to body
 		return false;
 	},
@@ -65,24 +66,49 @@ var Typer={
 			r++;
 			$("#logo").css({"transform":"rotate("+r+"deg)"});
 
+			if(key.keyCode==49){
+				Typer.speed=2;
+				if(Typer.index>=222){
+					Typer.speed=0;
+				}
+			};
+
+			if(key.keyCode==50){
+				Typer.speed=2;
+				if(Typer.index>=242){
+					Typer.speed=0;
+				}
+			};
+			if(key.keyCode==51){
+				Typer.speed=28;
+				if(Typer.index>=270){
+					Typer.speed=0;
+				}
+			};
+
+			if(key.keyCode==52){
+				Typer.speed=12;
+			};
+
 		if(key.keyCode==18){// key 18 = alt key
 			Typer.accessCount++; //increase counter
-			if(Typer.accessCount>=3){// if it's presed 3 times
+			if(Typer.accessCount>=1){// if it's presed n times
 				Typer.makeAccess(); // make access popup
 			}
 		}else if(key.keyCode==20){// key 20 = caps lock
 			Typer.deniedCount++; // increase counter
-			if(Typer.deniedCount>=3){ // if it's pressed 3 times
+			if(Typer.deniedCount>=3){ // if it's pressed n times
 				Typer.makeDenied(); // make denied popup
 			}
 		}else if(key.keyCode==27){ // key 27 = esc key
 			Typer.hidepop(); // hide all popups
 		}else if(Typer.text){ // otherway if text is loaded
 			var cont=Typer.content(); // get the console content
-			if(cont.substring(cont.length-1,cont.length)=="|") // if the last char is the blinking cursor
+			if(cont.substring(cont.length-1,cont.length)=="█") // if the last char is the blinking cursor
 				$("#console").html($("#console").html().substring(0,cont.length-1)); // remove it before adding the text
 			if(key.keyCode!=8){ // if key is not backspace
 				Typer.index+=Typer.speed;	// add to the index the speed
+				console.log(Typer.index);
 			}else{
 				if(Typer.index>0) // else if index is not less than 0
 					Typer.index-=Typer.speed;//	remove speed for deleting text
@@ -94,7 +120,7 @@ var Typer={
 			$("#console").html(text.replace(rtn,"<br/>").replace(rtt,"&nbsp;&nbsp;&nbsp;&nbsp;").replace(rts,"&nbsp;"));// replace newline chars with br, tabs with 4 space and blanks with an html blank
 			window.scrollBy(0,50); // scroll to make sure bottom is always visible
 		}
-		if ( key.preventDefault && key.keyCode != 122 ) { // prevent F11(fullscreen) from being blocked
+		if ( key.preventDefault && key.keyCode != 122 && key.keyCode != 123) { // prevent F11(fullscreen) from being blocked
 			key.preventDefault()
 		};
 		if(key.keyCode != 122){ // otherway prevent keys default behavior
@@ -104,9 +130,9 @@ var Typer={
 
 	updLstChr:function(){ // blinking cursor
 		var cont=this.content(); // get console
-		if(cont.substring(cont.length-1,cont.length)=="|") // if last char is the cursor
+		if(cont.substring(cont.length-1,cont.length)=="█") // if last char is the cursor
 			$("#console").html($("#console").html().substring(0,cont.length-1)); // remove it
 		else
-			this.write("|"); // else write it
+			this.write("█"); // else write it
 	}
 }
